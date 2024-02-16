@@ -45,10 +45,10 @@ class Bar extends StatelessWidget {
   }
 }
 
-class BarList extends StatelessWidget {
+class Bars extends StatelessWidget {
   final (double x, double y) _origin;
   final List<(double width, double? value)> _bars;
-  const BarList({
+  const Bars({
     super.key,
     required (double x, double y) origin,
     required List<(double width, double? value)> bars,

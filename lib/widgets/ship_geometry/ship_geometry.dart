@@ -71,11 +71,11 @@ class ShipGeometry extends StatelessWidget {
             BodyLine(
               origin: _origin,
             ),
-            BarList(
+            Bars(
               origin: _origin,
               bars: _bars,
             ),
-            FrameList(
+            Frames(
               origin: _origin,
               color: Colors.blue,
               frames: _frames,

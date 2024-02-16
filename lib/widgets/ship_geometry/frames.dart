@@ -18,11 +18,11 @@ class Frame extends StatelessWidget {
   }
 }
 
-class FrameList extends StatelessWidget {
+class Frames extends StatelessWidget {
   final Color _color;
   final (double x, double y) _origin;
   final List<double> _frames;
-  const FrameList({
+  const Frames({
     super.key,
     Color color = Colors.black,
     required (double x, double y) origin,
