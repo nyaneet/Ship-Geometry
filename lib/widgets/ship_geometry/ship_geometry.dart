@@ -48,16 +48,23 @@ class ShipGeometry extends StatelessWidget {
   final (double x, double y) _origin;
   final List<double> _frames;
   final List<(double, double?)> _bars;
+  final Color _bodyColor, _barColor, _frameColor;
   const ShipGeometry({
     super.key,
     double width = 0.0,
     double height = 0.0,
     (double, double) origin = (0, 0),
+    Color bodyColor = Colors.black,
+    Color barColor = Colors.black,
+    Color frameColor = Colors.black,
     required List<double> frames,
     required List<(double, double?)> bars,
   })  : _width = width,
         _height = height,
         _origin = origin,
+        _bodyColor = bodyColor,
+        _barColor = barColor,
+        _frameColor = frameColor,
         _frames = frames,
         _bars = bars;
 
@@ -74,15 +81,17 @@ class ShipGeometry extends StatelessWidget {
           children: [
             BodyLineFake(
               origin: _origin,
+              color: _bodyColor,
             ),
             Bars(
               origin: _origin,
               bars: _bars,
+              color: _barColor,
             ),
             Frames(
               origin: _origin,
-              color: Colors.blue,
               frames: _frames,
+              color: _frameColor,
             ),
             Positioned(
               top: 0,

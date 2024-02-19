@@ -28,7 +28,7 @@ class Bar extends StatelessWidget {
             double value => value >= 0
                 ? BorderSide(
                     color: _color,
-                    width: 1,
+                    width: 2,
                   )
                 : BorderSide.none,
           },
@@ -37,7 +37,7 @@ class Bar extends StatelessWidget {
             double value => value < 0
                 ? BorderSide(
                     color: _color,
-                    width: 1,
+                    width: 2,
                   )
                 : BorderSide.none,
           },
