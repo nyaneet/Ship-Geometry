@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ship_geometry/widgets/ship_geometry/bars.dart';
-import 'package:ship_geometry/widgets/ship_geometry/body_line.dart';
-import 'package:ship_geometry/widgets/ship_geometry/frames.dart';
+import 'package:ship_geometry/widgets/ship_geometry/widgets/bars.dart';
+import 'package:ship_geometry/widgets/ship_geometry/widgets/body_line_fake.dart';
+import 'package:ship_geometry/widgets/ship_geometry/widgets/frames.dart';
 
 enum Direction {
   vertical,
@@ -68,7 +68,7 @@ class ShipGeometry extends StatelessWidget {
         height: _height,
         child: Stack(
           children: [
-            BodyLine(
+            BodyLineFake(
               origin: _origin,
             ),
             Bars(

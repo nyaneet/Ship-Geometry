@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class BodyLine extends StatelessWidget {
+class BodyLineFake extends StatelessWidget {
   final (double x, double y) _origin;
-  const BodyLine({
+  const BodyLineFake({
     super.key,
     required (double x, double y) origin,
   }) : _origin = origin;
