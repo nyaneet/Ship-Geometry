@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ship_geometry/widgets/ship_geometry/ship_geometry.dart';
 
+///
+/// Creates a widget with visualization of the ship's frame
 class Frame extends StatelessWidget {
   final double _width;
   final Color _color;
@@ -18,6 +20,8 @@ class Frame extends StatelessWidget {
   }
 }
 
+///
+/// Creates a widget with visualization of the ship's frames
 class Frames extends StatelessWidget {
   final Color _color;
   final (double x, double y) _origin;

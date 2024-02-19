@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+///
+/// Сreates a widget with bar visualization of shear and moment diagram
 class Bar extends StatelessWidget {
   final double _width;
   final double? _value;
@@ -45,6 +47,8 @@ class Bar extends StatelessWidget {
   }
 }
 
+///
+/// Сreates a widget with visualization of shear and moment diagram
 class Bars extends StatelessWidget {
   final (double x, double y) _origin;
   final List<(double width, double? value)> _bars;

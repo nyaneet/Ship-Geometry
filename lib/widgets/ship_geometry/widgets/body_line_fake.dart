@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+///
+/// Create fake widget for visualization of the ship's body line
 class BodyLineFake extends StatelessWidget {
   final (double x, double y) _origin;
   const BodyLineFake({

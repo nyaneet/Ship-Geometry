@@ -8,6 +8,8 @@ enum Direction {
   horizontal,
 }
 
+///
+/// Creates vertical or horizontal line
 class GridLine extends StatelessWidget {
   final Direction _direction;
   final Color _color;
@@ -39,6 +41,8 @@ class GridLine extends StatelessWidget {
   }
 }
 
+///
+/// Сreates a widget with visualization of the ship geometry
 class ShipGeometry extends StatelessWidget {
   final double _width, _height;
   final (double x, double y) _origin;
