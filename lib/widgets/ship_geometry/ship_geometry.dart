@@ -41,6 +41,54 @@ class GridLine extends StatelessWidget {
   }
 }
 
+class MarkedGridLine extends StatelessWidget {
+  final Direction _direction;
+  final Color _color;
+  final double _thickness, _width;
+  final String _mark;
+  const MarkedGridLine({
+    super.key,
+    required Direction direction,
+    required String mark,
+    Color color = Colors.black,
+    double thickness = 1,
+    double width = 20,
+  })  : _direction = direction,
+        _mark = mark,
+        _color = color,
+        _thickness = thickness,
+        _width = width;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: _width,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Flexible(
+            flex: 0,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 5,
+              ),
+              child: Text(_mark),
+            ),
+          ),
+          Flexible(
+            flex: 1,
+            child: GridLine(
+              direction: _direction,
+              thickness: 1.0,
+              color: _color,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 ///
 /// Сreates a widget with visualization of the ship geometry
 class ShipGeometry extends StatelessWidget {
@@ -57,6 +105,7 @@ class ShipGeometry extends StatelessWidget {
     Color bodyColor = Colors.black,
     Color barColor = Colors.black,
     Color frameColor = Colors.black,
+    bool showGrid = false,
     required List<double> frames,
     required List<(double, double?)> bars,
   })  : _width = width,
@@ -79,10 +128,63 @@ class ShipGeometry extends StatelessWidget {
         height: _height,
         child: Stack(
           children: [
-            BodyLineFake(
-              origin: _origin,
-              color: _bodyColor,
+            Positioned(
+              top: 0.0,
+              bottom: 0.0,
+              left: originX,
+              child: const GridLine(
+                direction: Direction.vertical,
+                thickness: 2.0,
+              ),
             ),
+            Positioned(
+              right: 0.0,
+              bottom: originY - 15.0,
+              left: 0.0,
+              child: const MarkedGridLine(
+                direction: Direction.horizontal,
+                thickness: 2.0,
+                width: 30,
+                mark: '0',
+              ),
+            ),
+            Positioned(
+              right: 0.0,
+              bottom: originY + 50 - 15.0,
+              left: 0.0,
+              child: const MarkedGridLine(
+                direction: Direction.horizontal,
+                thickness: 1.0,
+                width: 30,
+                mark: '50',
+              ),
+            ),
+            Positioned(
+              right: 0.0,
+              bottom: originY + 100 - 15.0,
+              left: 0.0,
+              child: const MarkedGridLine(
+                direction: Direction.horizontal,
+                thickness: 1.0,
+                width: 30,
+                mark: '100',
+              ),
+            ),
+            Positioned(
+              right: 0.0,
+              bottom: originY + 150 - 15.0,
+              left: 0.0,
+              child: const MarkedGridLine(
+                direction: Direction.horizontal,
+                thickness: 1.0,
+                width: 30,
+                mark: '150',
+              ),
+            ),
+            // BodyLineFake(
+            //   origin: _origin,
+            //   color: _bodyColor,
+            // ),
             Bars(
               origin: _origin,
               bars: _bars,
@@ -92,18 +194,6 @@ class ShipGeometry extends StatelessWidget {
               origin: _origin,
               frames: _frames,
               color: _frameColor,
-            ),
-            Positioned(
-              top: 0,
-              bottom: 0,
-              left: originX,
-              child: const GridLine(direction: Direction.vertical),
-            ),
-            Positioned(
-              right: 0,
-              bottom: originY,
-              left: 0,
-              child: const GridLine(direction: Direction.horizontal),
             ),
           ],
         ),
