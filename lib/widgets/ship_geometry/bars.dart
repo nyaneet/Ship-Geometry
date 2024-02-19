@@ -7,8 +7,8 @@ class Bar extends StatelessWidget {
   const Bar({
     super.key,
     required double width,
+    required Color color,
     double? value,
-    Color color = Colors.black,
   })  : _width = width,
         _value = value,
         _color = color;
@@ -48,12 +48,15 @@ class Bar extends StatelessWidget {
 class Bars extends StatelessWidget {
   final (double x, double y) _origin;
   final List<(double width, double? value)> _bars;
+  final Color _color;
   const Bars({
     super.key,
     required (double x, double y) origin,
     required List<(double width, double? value)> bars,
+    Color color = Colors.black,
   })  : _origin = origin,
-        _bars = bars;
+        _bars = bars,
+        _color = color;
 
   @override
   Widget build(BuildContext context) {
@@ -62,8 +65,8 @@ class Bars extends StatelessWidget {
     return Stack(
       children: [
         ..._bars.map(
-          (config) {
-            final (width, value) = config;
+          (barConfig) {
+            final (width, value) = barConfig;
             final bar = Positioned(
               bottom: switch (value) {
                 null => originY,
@@ -71,7 +74,7 @@ class Bars extends StatelessWidget {
               },
               left: originX + offsetX,
               child: Bar(
-                color: Colors.pink,
+                color: _color,
                 width: width,
                 value: value,
               ),
