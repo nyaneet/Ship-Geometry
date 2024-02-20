@@ -132,7 +132,7 @@ class MarkedGridLine extends StatelessWidget {
             flex: 1,
             child: GridLine(
               direction: _direction,
-              thickness: 1.0,
+              thickness: _thickness,
               color: _color,
             ),
           ),
@@ -170,10 +170,11 @@ class ShipGeometry extends StatelessWidget {
         _frames = frames,
         _bars = bars;
 
+  double _xTransformed(double x) => x + _origin.$1;
+  double _yTransformed(double y) => y + _origin.$2;
+
   @override
   Widget build(BuildContext context) {
-    final (originX, originY) = _origin;
-
     return Padding(
       padding: const EdgeInsets.all(20),
       child: SizedBox(
@@ -181,63 +182,64 @@ class ShipGeometry extends StatelessWidget {
         height: _height,
         child: Stack(
           children: [
+            // Testing GridLine
             Positioned(
               top: 0.0,
               bottom: 0.0,
-              left: originX,
+              left: _xTransformed(0.0),
               child: const GridLine(
                 direction: Direction.vertical,
-                thickness: 2.0,
+                thickness: 1.0,
               ),
             ),
             Positioned(
               right: 0.0,
-              bottom: originY - 15.0,
+              bottom: _yTransformed(-15.0),
               left: 0.0,
               child: const MarkedGridLine(
                 direction: Direction.horizontal,
-                thickness: 2.0,
+                thickness: 1.0,
                 width: 30,
                 mark: '0',
               ),
             ),
             Positioned(
               right: 0.0,
-              bottom: originY + 50 - 15.0,
+              bottom: _yTransformed(50.0 - 15.0),
               left: 0.0,
               child: const MarkedGridLine(
                 direction: Direction.horizontal,
                 thickness: 1.0,
                 width: 30,
-                mark: '50',
+                mark: '1',
               ),
             ),
             Positioned(
               right: 0.0,
-              bottom: originY + 100 - 15.0,
+              bottom: _yTransformed(100.0 - 15.0),
               left: 0.0,
               child: const MarkedGridLine(
                 direction: Direction.horizontal,
                 thickness: 1.0,
                 width: 30,
-                mark: '100',
+                mark: '2',
               ),
             ),
             Positioned(
               right: 0.0,
-              bottom: originY + 150 - 15.0,
+              bottom: _yTransformed(150.0 - 15.0),
               left: 0.0,
               child: const MarkedGridLine(
                 direction: Direction.horizontal,
                 thickness: 1.0,
                 width: 30,
-                mark: '150',
+                mark: '3',
               ),
             ),
-            // BodyLineFake(
-            //   origin: _origin,
-            //   color: _bodyColor,
-            // ),
+            BodyLineFake(
+              origin: _origin,
+              color: _bodyColor,
+            ),
             Bars(
               origin: _origin,
               bars: _bars,
