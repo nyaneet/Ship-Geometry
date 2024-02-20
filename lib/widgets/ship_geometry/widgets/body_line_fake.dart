@@ -50,7 +50,7 @@ class _BodyLineFakePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    var paint = Paint()
+    final paint = Paint()
       ..color = _color
       ..strokeWidth = _strokeWidth;
 
