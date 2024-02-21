@@ -102,7 +102,7 @@ class _GridLinePainter extends CustomPainter {
 class MarkedGridLine extends StatelessWidget {
   final Direction _direction;
   final Color _color;
-  final double _thickness, _width;
+  final double _thickness, _width, _markSize;
   final String _mark;
   const MarkedGridLine({
     super.key,
@@ -111,11 +111,13 @@ class MarkedGridLine extends StatelessWidget {
     Color color = Colors.black,
     double thickness = 1,
     double width = 20,
+    double markSize = 12,
   })  : _direction = direction,
         _mark = mark,
         _color = color,
         _thickness = thickness,
-        _width = width;
+        _width = width,
+        _markSize = markSize;
 
   @override
   Widget build(BuildContext context) {
@@ -130,7 +132,10 @@ class MarkedGridLine extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                 horizontal: 5,
               ),
-              child: Text(_mark),
+              child: Text(
+                _mark,
+                style: TextStyle(fontSize: _markSize),
+              ),
             ),
           ),
           Flexible(
