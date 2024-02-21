@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ship_geometry/widgets/ship_geometry/widgets/frames.dart';
 import 'package:ship_geometry/widgets/ship_geometry/widgets/bars.dart';
 import 'package:ship_geometry/widgets/ship_geometry/widgets/body_line_fake.dart';
-import 'package:ship_geometry/widgets/ship_geometry/widgets/frames.dart';
+import 'package:ship_geometry/widgets/ship_geometry/widgets/axis_line.dart';
 
 enum Direction {
   vertical,
@@ -186,64 +187,47 @@ class ShipGeometry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 100.0,
+        vertical: 20.0,
+      ),
       child: SizedBox(
         width: _width,
         height: _height,
         child: Stack(
+          clipBehavior: Clip.none,
           children: [
-            // Testing GridLine
+            // Testing AxisLine and GridLine
             Positioned(
               top: 0.0,
               bottom: 0.0,
-              left: _xTransformed(0.0),
-              child: const GridLine(
+              left: 0.0,
+              child: AxisLine(
                 direction: Direction.vertical,
-                thickness: 1.0,
+                size: _height,
+                origin: _origin.$2,
+                markInterval: 50.0,
+                color: Colors.red,
               ),
             ),
             Positioned(
-              right: 0.0,
-              bottom: _yTransformed(-15.0),
-              left: 0.0,
-              child: const MarkedGridLine(
-                direction: Direction.horizontal,
-                thickness: 1.0,
-                width: 30,
-                mark: '0',
+              top: 0.0,
+              bottom: 0.0,
+              left: -50.0,
+              child: AxisLine(
+                direction: Direction.vertical,
+                size: _height,
+                origin: _origin.$2,
+                markInterval: 100.0,
+                color: Colors.cyan,
               ),
             ),
             Positioned(
-              right: 0.0,
-              bottom: _yTransformed(50.0 - 15.0),
               left: 0.0,
-              child: const MarkedGridLine(
-                direction: Direction.horizontal,
-                thickness: 1.0,
-                width: 30,
-                mark: '1',
-              ),
-            ),
-            Positioned(
               right: 0.0,
-              bottom: _yTransformed(100.0 - 15.0),
-              left: 0.0,
-              child: const MarkedGridLine(
+              top: _yTransformed(0.0),
+              child: const GridLine(
                 direction: Direction.horizontal,
-                thickness: 1.0,
-                width: 30,
-                mark: '2',
-              ),
-            ),
-            Positioned(
-              right: 0.0,
-              bottom: _yTransformed(150.0 - 15.0),
-              left: 0.0,
-              child: const MarkedGridLine(
-                direction: Direction.horizontal,
-                thickness: 1.0,
-                width: 30,
-                mark: '3',
               ),
             ),
             BodyLineFake(
