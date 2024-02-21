@@ -38,6 +38,7 @@ class BodyLineFake extends StatelessWidget {
   }
 }
 
+///
 /// Paints fake body line of the ship
 class _BodyLineFakePainter extends CustomPainter {
   final double _strokeWidth;

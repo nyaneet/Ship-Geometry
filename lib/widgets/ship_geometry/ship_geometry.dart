@@ -45,6 +45,9 @@ class GridLine extends StatelessWidget {
   }
 }
 
+///
+/// Paints vertical or horizontal line on canvas
+/// in the middle of the sized box
 class _GridLinePainter extends CustomPainter {
   final Color _color;
   final double _thickness;
@@ -94,6 +97,8 @@ class _GridLinePainter extends CustomPainter {
   }
 }
 
+///
+/// Creates GridLine with mark on the side
 class MarkedGridLine extends StatelessWidget {
   final Direction _direction;
   final Color _color;
