@@ -99,61 +99,6 @@ class _GridLinePainter extends CustomPainter {
 }
 
 ///
-/// Creates GridLine with mark on the side
-class MarkedGridLine extends StatelessWidget {
-  final Direction _direction;
-  final Color _color;
-  final double _thickness, _width, _markSize;
-  final String _mark;
-  const MarkedGridLine({
-    super.key,
-    required Direction direction,
-    required String mark,
-    Color color = Colors.black,
-    double thickness = 1,
-    double width = 20,
-    double markSize = 12,
-  })  : _direction = direction,
-        _mark = mark,
-        _color = color,
-        _thickness = thickness,
-        _width = width,
-        _markSize = markSize;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: _width,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Flexible(
-            flex: 0,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 5,
-              ),
-              child: Text(
-                _mark,
-                style: TextStyle(fontSize: _markSize),
-              ),
-            ),
-          ),
-          Flexible(
-            flex: 1,
-            child: GridLine(
-              direction: _direction,
-              thickness: _thickness,
-              color: _color,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-///
 /// Сreates a widget with visualization of the ship geometry
 class ShipGeometry extends StatelessWidget {
   final double _width, _height;
@@ -189,7 +134,7 @@ class ShipGeometry extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 100.0,
-        vertical: 20.0,
+        vertical: 100.0,
       ),
       child: SizedBox(
         width: _width,
@@ -207,21 +152,33 @@ class ShipGeometry extends StatelessWidget {
                 size: _height,
                 origin: _origin.$2,
                 markInterval: 50.0,
-                color: Colors.red,
+                color: Colors.black,
               ),
             ),
-            Positioned(
-              top: 0.0,
-              bottom: 0.0,
-              left: -50.0,
-              child: AxisLine(
-                direction: Direction.vertical,
-                size: _height,
-                origin: _origin.$2,
-                markInterval: 100.0,
-                color: Colors.cyan,
-              ),
-            ),
+            // Positioned(
+            //   top: 0.0,
+            //   bottom: 0.0,
+            //   left: -50.0,
+            //   child: AxisLine(
+            //     direction: Direction.vertical,
+            //     size: _height,
+            //     origin: _origin.$2,
+            //     markInterval: 100.0,
+            //     color: Colors.cyan,
+            //   ),
+            // ),
+            // Positioned(
+            //   left: 0.0,
+            //   right: 0.0,
+            //   top: _height,
+            //   child: AxisLine(
+            //     direction: Direction.horizontal,
+            //     size: _width,
+            //     origin: _origin.$1,
+            //     markInterval: 100.0,
+            //     color: Colors.cyan,
+            //   ),
+            // ),
             Positioned(
               left: 0.0,
               right: 0.0,
